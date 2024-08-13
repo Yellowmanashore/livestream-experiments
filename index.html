@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Live Chat test #4 title view</title>
+    <title>YouTube Live Chat</title>
+    <style>
+        /* Add styles to make the iframe more responsive */
+        iframe {
+            width: 100%;
+            height: 80vh; /* Make the iframe take up 80% of the viewport height */
+            min-height: 400px; /* Ensure the iframe has a minimum height */
+            border: none; /* Remove the border for a cleaner look */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5em;
+            padding: 10px;
+            background-color: #f1f1f1;
+            margin: 0;
+        }
+    </style>
     <script>
         // Comprehensive Device Redirection Script
         if (/Mobi|Android|Tablet|iPad|Kindle|Silk|PlayBook|BB10|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -12,13 +35,10 @@
     </script>
 </head>
 <body>
-    <h1>YouTube Live Chat test #4 small header</h1> 
+    <h1>YouTube Live Chat</h1>
     <iframe
-        width="100%"
-        height="600"
         src="https://www.youtube.com/live_chat?v=F5Ix52ls-GQ&embed_domain=yellowmanashore.github.io"
-        frameborder="0"
         allowfullscreen
-></iframe>
+    ></iframe>
 </body>
 </html>
