@@ -1,37 +1,33 @@
-const db = firebase.firestore();
-const pollOptionsDiv = document.getElementById('poll-options');
-const submitVoteBtn = document.getElementById('submit-vote');
-let selectedOption = '';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - Create Poll</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin Panel - Create Poll</h1>
+    
+    <div id="login-form">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="login-btn">Login</button>
+    </div>
 
-// Fetch poll options from Firestore
-db.collection('polls').doc('currentPoll').get().then(doc => {
-    if (doc.exists) {
-        const options = doc.data().options;
-        options.forEach(option => {
-            const optionBtn = document.createElement('button');
-            optionBtn.textContent = option;
-            optionBtn.onclick = () => {
-                selectedOption = option;
-                optionBtn.classList.add('selected');
-            };
-            pollOptionsDiv.appendChild(optionBtn);
-        });
-    } else {
-        pollOptionsDiv.textContent = 'No active poll.';
-    }
-});
+    <div id="poll-creation" style="display:none;">
+        <h2>Create a New Poll</h2>
+        <input type="text" id="poll-question" placeholder="Poll Question"><br>
+        <input type="text" id="option-1" placeholder="Option 1"><br>
+        <input type="text" id="option-2" placeholder="Option 2"><br>
+        <input type="text" id="option-3" placeholder="Option 3"><br>
+        <input type="text" id="option-4" placeholder="Option 4"><br>
+        <button id="create-poll-btn">Create Poll</button>
+    </div>
 
-// Submit vote
-submitVoteBtn.onclick = () => {
-    if (selectedOption) {
-        db.collection('polls').doc('currentPoll').update({
-            [`votes.${selectedOption}`]: firebase.firestore.FieldValue.increment(1)
-        }).then(() => {
-            alert('Vote submitted!');
-        }).catch(error => {
-            console.error('Error submitting vote:', error);
-        });
-    } else {
-        alert('Please select an option.');
-    }
-};
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <!-- Your custom JavaScript file -->
+    <script src="admin.js"></script>
+</body>
+</html>
